@@ -1,0 +1,104 @@
+﻿<Page x:Class="PetClinic.ReceptionistDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PetClinic" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="ReceptionistDashboard" Height="470" Width="800">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF805E5B" Offset="0.968"/>
+                <GradientStop Color="#FF64609C" Offset="0.818"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Image Source="/img/appointment.png" Panel.ZIndex="1" Margin="388,86,388,340" />
+
+        <TextBlock
+FontWeight="Bold" Text="FSD Pet Clinic" TextAlignment="Center" Margin="0,10,663,401" FontSize="20" FontFamily="Ebrima" RenderTransformOrigin="0.246,0.821">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF9CB6C3" Offset="0.549"/>
+                    <GradientStop Color="#FF3D7372" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
+        <materialDesign:PackIcon Kind="Paw" Margin="137,13,0,0" Height="21" Width="28" >
+            <materialDesign:PackIcon.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF72C3BD" Offset="0.748"/>
+                    <GradientStop Color="#FFC598B9" Offset="1"/>
+                </LinearGradientBrush>
+            </materialDesign:PackIcon.Foreground>
+        </materialDesign:PackIcon>
+
+        <TextBlock
+FontWeight="Bold" TextAlignment="Center" Margin="221,44,219,366" FontSize="30" FontFamily="Myriad Pro" Foreground="White" Height="60" RenderTransformOrigin="0.498,0.164" TextDecorations="Underline"><Run Language="en-ca" Text="Receptionist Dashboard"/></TextBlock>
+        <Image Source="/img/pets.png" Opacity="0.1" Panel.ZIndex="-1" />
+        <materialDesign:Card 
+            Padding="8"
+            Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Margin="73,88,65,118" Background="#FFB8D6B4">
+            <TextBlock
+                FontSize="16"
+                Margin="0,-8,271,218" ><Run Language="en-ca" Text="Today's Appointments"/><LineBreak/><Run/><LineBreak/><Run/><Run Text="                 "/></TextBlock>
+        </materialDesign:Card>
+        <materialDesign:Card
+                             Padding="8"
+                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                             Margin="0,401,0,0"
+            Background="#FF673AB7">
+            <TabControl Width="Auto" Height="Auto"
+                        Name="TabControl"
+                        materialDesign:ColorZoneAssist.Mode="PrimaryMid"
+                        SelectionChanged="TabControl_SelectionChanged"
+                        Style="{StaticResource MaterialDesignFilledTabControl}">
+                <TabItem Header="Home" Name="HomeTab"/>
+                <TabItem Header="Pets" Name="PetsTab"/>
+                <TabItem Header="Appointments" Name="AppointmentsTab"/>
+                <TabItem Header="Billing" Name="BillingTab"/>
+            </TabControl>
+        </materialDesign:Card>
+        <Button Margin="722,10,10,424" Background="{x:Null}"
+                Click="Logout"
+ ToolTip="Logout" x:Name="btnExit" RenderTransformOrigin="0.679,0.5" BorderBrush="#33000000" Foreground="{x:Null}">
+            <materialDesign:PackIcon Kind="Logout" Foreground="White" Width="30" Height="22" RenderTransformOrigin="0.933,0.467" HorizontalAlignment="Center" />
+        </Button>
+        <ListView x:Name="Appointments"
+            ItemsSource="{Binding Items1}" FontSize="11"  Background="White" Foreground="#DD000000" VerticalAlignment="Top" Height="207" Margin="104,124,98,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn 
+                        DisplayMemberBinding="{Binding AppointmentID}"
+                        Header="ID" />
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Pet}"
+                        Header="Pet" />
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Pet.Owner.Email}"
+                        Header="Email" />
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Pet.Owner.Phone}"
+                        Header="Phone" />
+                    <GridViewColumn
+    DisplayMemberBinding="{Binding Type}"
+    Header="Type" />
+                    <GridViewColumn                       
+                        Header="Date">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding AppointmentDate, StringFormat='{}{0:d}'}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <materialDesign:PackIcon Kind="Home" Margin="145,428,0,0" Panel.ZIndex="1" Height="26" Width="20" />
+        <Image Source="/img/pets.png" Panel.ZIndex="1" Margin="330,422,450,12" />
+        <Image Source="/img/appointment.png" Panel.ZIndex="1" Margin="557,420,219,6" />
+        <materialDesign:PackIcon Kind="Cash" Margin="713,431,0,0" Height="22" Width="22" />
+    </Grid>
+</Page>

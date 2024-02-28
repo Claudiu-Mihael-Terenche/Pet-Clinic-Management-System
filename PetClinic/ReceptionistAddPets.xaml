@@ -1,0 +1,79 @@
+﻿<Window x:Class="PetClinic.ReceptionistAddPets"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PetClinic" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+         WindowStartupLocation="CenterScreen"
+        Title="ReceptionistAddPets" Height="600" Width="600" WindowStyle="None" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF805E5B" Offset="1"/>
+                <GradientStop Color="#FF443DA2" Offset="0.72"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image Source="/img/pets.png" Opacity="0.1" Panel.ZIndex="-1" Margin="2,13,-2,-13" />
+        <Button Margin="722,10,10,424" Background="{x:Null}"
+ ToolTip="Logout" x:Name="btnExit" RenderTransformOrigin="0.679,0.5" BorderBrush="#33000000" Foreground="{x:Null}"/>
+        <Button Name="btnCancel"
+            Click="btnCancel_Click"
+            Content="CANCEL"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+            Style="{StaticResource MaterialDesignRaisedLightButton}"
+            ToolTip="Resource name: MaterialDesignRaisedLightButton" Margin="329,544,135,24" FontWeight="Bold" />
+        <TextBlock
+            FontWeight="Bold" TextAlignment="Center" Margin="176,34,156,524" FontSize="30" FontFamily="Myriad Pro" Foreground="White" RenderTransformOrigin="0.498,0.164"><Run Language="en-ca" Text="Add Pet"/></TextBlock>
+        <TextBox Name="Age" HorizontalAlignment="Center" Margin="220,276,320,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="38" Background="{x:Null}" BorderBrush="#89EFEFEF" Foreground="White"/>
+        <materialDesign:PackIcon Kind="Paw" Margin="49,91,0,0" Height="55" Width="30" />
+        <materialDesign:PackIcon Kind="BabyCarriage" Height="32" Width="27" Margin="51,278,0,0" RenderTransformOrigin="0.618,-0.243"/>
+        <materialDesign:PackIcon Kind="GenderMaleFemale" Height="25" Width="26" Margin="52,222,0,0"/>
+        <materialDesign:PackIcon Kind="Dog" Height="37" Width="32" Margin="49,157,0,0" />
+        <TextBlock TextAlignment="Center" Margin="76,109,418,462" FontSize="22" FontFamily="Myriad Pro" Foreground="White" RenderTransformOrigin="0.498,0.164"><Run Language="en-ca" Text="Name"/><LineBreak/><Run Language="en-ca"/></TextBlock>
+        <TextBlock TextAlignment="Center" Margin="95,162,435,412" FontSize="22" FontFamily="Myriad Pro" Foreground="White" RenderTransformOrigin="0.498,0.164"><Run Language="en-ca" Text="Species"/></TextBlock>
+        <TextBlock TextAlignment="Center" Margin="95,222,437,352" FontSize="22" FontFamily="Myriad Pro" Foreground="White" RenderTransformOrigin="0.498,0.164"><Run Language="en-ca" Text="Gender"/></TextBlock>
+        <TextBlock TextAlignment="Center" Margin="65,280,432,294" FontSize="22" FontFamily="Myriad Pro" Foreground="White" RenderTransformOrigin="0.498,0.164"><Run Language="en-ca" Text="Age"/></TextBlock>
+        <Button Name="btnAdd"
+                Click="btnAdd_Click"
+  Content="ADD"
+  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+  Style="{StaticResource MaterialDesignRaisedLightButton}"
+  ToolTip="Resource name: MaterialDesignRaisedLightButton" Margin="161,544,303,24" FontWeight="Bold" />
+        <ComboBox
+            Name="Species"
+            DisplayMemberPath="TypeName"
+  materialDesign:ComboBoxAssist.MaxLength="2"
+  materialDesign:HintAssist.Hint="Search"
+  materialDesign:HintAssist.HintOpacity=".26"
+  IsEditable="True"  Margin="216,164,196,0" VerticalAlignment="Top" Height="25" Background="White" Foreground="Black">
+
+        </ComboBox>
+        <ComboBox
+            Name="Genders"
+            materialDesign:ComboBoxAssist.MaxLength="2"
+            materialDesign:HintAssist.Hint="Search"
+            materialDesign:HintAssist.HintOpacity=".26"
+            IsEditable="True"  Margin="216,225,196,0" VerticalAlignment="Top" Height="25" Background="White" Foreground="Black">
+
+        </ComboBox>
+        <TextBox Name="Name" HorizontalAlignment="Left" Margin="216,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209" Height="38" Background="{x:Null}" BorderBrush="#89EFEFEF" Foreground="White"/>
+        <TextBlock TextAlignment="Center" Margin="87,329,410,245" FontSize="28" FontFamily="Myriad Pro" Foreground="White" RenderTransformOrigin="0.498,0.164" Text="Owner"/>
+        <TextBox Name="OwnerFirstName" HorizontalAlignment="Left" Margin="216,367,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" Height="38" Background="{x:Null}" BorderBrush="#89EFEFEF" Foreground="White"/>
+        <TextBlock TextAlignment="Center" Margin="63,380,392,194" FontSize="20" FontFamily="Myriad Pro" Foreground="White" RenderTransformOrigin="0.498,0.164" Text="First Name"/>
+        <TextBlock TextAlignment="Center" Margin="63,418,392,156" FontSize="20" FontFamily="Myriad Pro" Foreground="White" RenderTransformOrigin="0.498,0.164" Text="Last Name"/>
+        <TextBox Name="OwnerLastName" HorizontalAlignment="Left" Margin="216,409,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" Height="34" Background="{x:Null}" BorderBrush="#89EFEFEF" Foreground="White"/>
+        <TextBlock TextAlignment="Center" Margin="63,462,392,112" FontSize="20" FontFamily="Myriad Pro" Foreground="White" RenderTransformOrigin="0.498,0.164" Text="Email"/>
+        <TextBox Name="OwnerEmail" HorizontalAlignment="Left" Margin="216,448,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" Height="34" Background="{x:Null}" BorderBrush="#89EFEFEF" Foreground="White"/>
+        <TextBlock TextAlignment="Center" Margin="63,501,392,73" FontSize="20" FontFamily="Myriad Pro" Foreground="White" RenderTransformOrigin="0.498,0.164" Text="Phone #"/>
+        <TextBox Name="OwnerPhone" HorizontalAlignment="Left" Margin="216,492,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" Height="34" Background="{x:Null}" BorderBrush="#89EFEFEF" Foreground="White"/>
+        <ComboBox
+            Name="Owners"
+            materialDesign:ComboBoxAssist.MaxLength="2"
+            materialDesign:HintAssist.Hint="Search"
+            materialDesign:HintAssist.HintOpacity=".26"
+            IsEditable="True"  Margin="216,334,196,0" VerticalAlignment="Top" Height="25" Background="White" Foreground="Black">
+
+        </ComboBox>
+    </Grid>
+</Window>
